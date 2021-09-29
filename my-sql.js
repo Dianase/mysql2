@@ -1,10 +1,11 @@
 import mysql from "mysql"
+import dotenv from "dotenv"
 
 const connection = mysql.createConnection({
-  host: "db.bayleen.com",
-  user: "swecc04",
-  password: "BuildingSoFlo2021",
-  database: "swecc04"
+  host: process.env.DB_HOST,
+  user: process.env.DB_USER,
+  password: process.env.DB_PASSWORD,
+  database: process.env.DATABASE
 })
 
 const getStudents = (lastName) => {
@@ -18,4 +19,19 @@ const getStudents = (lastName) => {
   })
 }
 
-getStudents('Toribio')
+// getStudents('Toribio')
+
+const insertStudent = (studentid, firstname, lastname, email, phone, admissionsdate) =>{
+  const query = `INSERT INTO students(student_id, first_name, last_name, email, phone, admission_date) 
+  VALUES(${studentid}, "${firstname}", "${lastname}", "${email}", "${phone}", "${admissionsdate}")`
+
+  connection.query(insertStudent, (error, results) =>{
+    if(error){
+      console.log(error)
+    }
+    console.log(results)
+  })
+}
+insertStudent(3333, 'Albert', 'Einstein', 'aeinstein@rockmail.com', '1800callagenius', "2021-09-29")
+
+connection.end()
