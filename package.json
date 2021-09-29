@@ -1,0 +1,14 @@
+{
+  "name": "mysql-meet-js-2",
+  "version": "0.0.1",
+  "description": "feeling great",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Diana Tineo",
+  "license": "MIT",
+  "dependencies": {
+    "mysql": "^2.18.1"
+  }
+}
